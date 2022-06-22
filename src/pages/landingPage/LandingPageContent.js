@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setInlineRedux } from "../../redux/promodex/actions";
-import { Card, Row, Col, Input, Select, Button } from "antd"
+import { Card, Row, Col, Input, Select } from "antd"
 import moment from 'moment';
 import { AiOutlineSwap } from "react-icons/ai";
 
