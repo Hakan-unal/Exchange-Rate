@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setInlineRedux } from "../../redux/promodex/actions";
-import { Card, Row, Col, Input, Select } from "antd"
+import { Card, Row, Col, Input, Select, Button } from "antd"
 import moment from 'moment';
+import { AiOutlineSwap } from "react-icons/ai";
 
 const currencyTypes = [
   { value: "USD", name: "DOLAR (USD)" },
@@ -100,10 +101,20 @@ const LandingPageContent = (props) => {
       });
   }
 
+
+  const handleSwap = () => {
+    handleSearch(leftValue, rightValue)
+
+    setLeftValue(rightValue);
+    setRightValue(leftValue)
+  }
+
   useEffect(() => {
 
     handleSearch(rightValue, leftValue)
   }, [])
+
+
 
 
 
@@ -125,7 +136,7 @@ const LandingPageContent = (props) => {
             value={date}
           />
         </Col>
-        <Col sm={{ span: 8, offset: 3 }}>
+        <Col sm={{ span: 8, offset: 2 }}>
           <Select
             size='large'
             value={leftValue}
@@ -139,7 +150,11 @@ const LandingPageContent = (props) => {
             {currenctSelectInput}
           </Select>
         </Col>
-        <Col sm={{ span: 8, offset: 2 }}>
+
+        <Col sm={{ span: 1, offset: 1 }}>
+          <AiOutlineSwap style={{ cursor: "pointer" }} onClick={() => handleSwap()} size={40} />
+        </Col>
+        <Col sm={{ span: 8, offset: 1 }}>
           <Select
             size='large'
             value={rightValue}
@@ -153,7 +168,7 @@ const LandingPageContent = (props) => {
             {currenctSelectInput}
           </Select>
         </Col>
-        <Col style={{ marginTop: 25 }} sm={{ span: 8, offset: 3 }}>
+        <Col style={{ marginTop: 25 }} sm={{ span: 8, offset: 2 }}>
           <Input
             size='large'
             onChange={(event) => setMultipleValue(event.target.value)}
@@ -162,7 +177,7 @@ const LandingPageContent = (props) => {
           />
         </Col>
 
-        <Col style={{ marginTop: 25 }} sm={{ span: 8, offset: 2 }}>
+        <Col style={{ marginTop: 25 }} sm={{ span: 8, offset: 3 }}>
           <Input
             size='large'
             disabled
